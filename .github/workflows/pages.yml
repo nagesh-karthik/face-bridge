@@ -1,0 +1,56 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build static site
+        run: |
+          mkdir _site
+          cp index.html _site/
+          cp .nojekyll _site/
+          cp -R assets _site/
+          cp -R results _site/
+          cp -R results_comparison_arcface _site/
+          cp -R results_projection_heads_residual _site/
+          cp -R results_streamed_arcface _site/
+          find _site -name "pair_results.csv" -delete
+          find _site -name "streamed_pairs.csv" -delete
+          find _site -name "train_pairs.csv" -delete
+          find _site -name "val_pairs.csv" -delete
+          find _site -name "test_pairs.csv" -delete
+          find _site -name "run_summary.json" -delete
+          find _site -name "*.pt" -delete
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

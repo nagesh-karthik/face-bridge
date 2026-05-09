@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Face Bridge: quality-aware ID-to-selfie face verification using embedding similarity, blur, illumination, and face-visibility cues."
+    >
+    <title>Face Bridge | Quality-Aware ID-to-Selfie Verification</title>
+    <link rel="stylesheet" href="assets/site.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top">Face Bridge</a>
+        <div class="nav-links">
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#poster">Poster</a>
+          <a href="https://github.com/nagesh-karthik/face-bridge">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Computer Vision Project</p>
+          <h1>Bridging the Gap Between ID Photos and Selfies</h1>
+          <p class="lede">
+            A modern face verification approach that combines pretrained face
+            embeddings with interpretable image-quality cues for blur,
+            illumination, and face visibility.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#results">View Results</a>
+            <a class="button secondary" href="https://github.com/nagesh-karthik/face-bridge">Open Repository</a>
+          </div>
+        </div>
+        <figure class="hero-figure">
+          <img
+            src="results_comparison_arcface/baseline_vs_quality_fusion_roc.png"
+            alt="ROC curve comparing ArcFace cosine baseline with quality-aware fusion"
+          >
+          <figcaption>Published baseline vs quality-aware fusion</figcaption>
+        </figure>
+      </section>
+
+      <section class="metric-band" aria-label="Headline metrics">
+        <div class="metric">
+          <span class="metric-value">0.976</span>
+          <span class="metric-label">ROC-AUC, quality-aware ArcFace fusion</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">0.019</span>
+          <span class="metric-label">Equal Error Rate on streamed sample</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">0.964</span>
+          <span class="metric-label">Accuracy at EER threshold</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">0</span>
+          <span class="metric-label">Raw face or ID images published</span>
+        </div>
+      </section>
+
+      <section class="section" id="method">
+        <div class="section-heading">
+          <p class="eyebrow">Method</p>
+          <h2>Quality-aware verification</h2>
+        </div>
+        <div class="method-grid">
+          <article class="step">
+            <span class="step-number">1</span>
+            <h3>Embed both faces</h3>
+            <p>
+              ID photos and selfies are aligned through DeepFace and encoded
+              with published face-recognition backbones such as ArcFace and
+              FaceNet512.
+            </p>
+          </article>
+          <article class="step">
+            <span class="step-number">2</span>
+            <h3>Measure visual quality</h3>
+            <p>
+              Classic computer-vision signals estimate blur using variance of
+              Laplacian, exposure using grayscale brightness, and face
+              visibility using detector success.
+            </p>
+          </article>
+          <article class="step">
+            <span class="step-number">3</span>
+            <h3>Fuse similarity and confidence</h3>
+            <p>
+              The final score combines embedding similarity with pair-level
+              image quality, making the output easier to interpret in difficult
+              lighting or blurry-image cases.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div class="section-copy">
+          <p class="eyebrow">Computer Vision Contribution</p>
+          <h2>Beyond “just use ArcFace”</h2>
+          <p>
+            The published face-recognition model provides the identity signal.
+            Face Bridge adds a transparent quality layer around it, so the
+            system can account for common ID-to-selfie failure modes such as
+            soft focus, underexposure, overexposure, and poor face visibility.
+          </p>
+        </div>
+        <div class="formula-block" aria-label="Quality-aware scoring formula">
+          <p>overall quality = 0.35 brightness + 0.35 sharpness + 0.30 face visibility</p>
+          <p>final score = 0.80 similarity + 0.20 pair quality</p>
+        </div>
+      </section>
+
+      <section class="section results-section" id="results">
+        <div class="section-heading">
+          <p class="eyebrow">Results</p>
+          <h2>Poster-ready figures</h2>
+        </div>
+        <div class="figure-grid">
+          <figure class="result-figure wide">
+            <img
+              src="results_comparison_arcface/baseline_vs_quality_fusion_roc.png"
+              alt="ROC curve comparing published ArcFace baseline with quality-aware fusion"
+            >
+            <figcaption>Quality-aware fusion improved ROC-AUC from 0.971 to 0.976 on the streamed ArcFace sample.</figcaption>
+          </figure>
+          <figure class="result-figure">
+            <img
+              src="results_streamed_arcface/score_distribution.png"
+              alt="Distribution of verification scores for genuine and impostor pairs"
+            >
+            <figcaption>Score distributions separate genuine and impostor pairs.</figcaption>
+          </figure>
+          <figure class="result-figure">
+            <img
+              src="results_streamed_arcface/average_quality_by_domain.png"
+              alt="Average image quality for ID and selfie domains"
+            >
+            <figcaption>Quality statistics expose domain differences between ID and selfie images.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section table-section">
+        <div class="section-heading">
+          <p class="eyebrow">Baseline Comparison</p>
+          <h2>ArcFace cosine vs quality-aware fusion</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>ROC-AUC</th>
+                <th>EER</th>
+                <th>Accuracy @ EER</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Published baseline: ArcFace cosine similarity</td>
+                <td>0.971</td>
+                <td>0.019</td>
+                <td>0.964</td>
+              </tr>
+              <tr>
+                <td>Proposed: quality-aware fused score</td>
+                <td>0.976</td>
+                <td>0.019</td>
+                <td>0.964</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <figure class="result-figure">
+          <img
+            src="results_projection_heads_residual/projection_heads_vs_arcface_roc.png"
+            alt="ROC curve for frozen ArcFace baseline and prototype residual ID/selfie adapters"
+          >
+          <figcaption>Two-domain residual adapters matched ArcFace but did not improve on the small public sample.</figcaption>
+        </figure>
+        <div class="section-copy">
+          <p class="eyebrow">Ablation</p>
+          <h2>Two-domain adapter prototype</h2>
+          <p>
+            A second experiment trained separate residual adapter heads for ID
+            photos and selfies. On the small public sample, this was a useful
+            negative result: the adapters did no harm but did not outperform
+            the frozen ArcFace baseline.
+          </p>
+        </div>
+      </section>
+
+      <section class="section poster-section" id="poster">
+        <div class="section-heading">
+          <p class="eyebrow">Poster Narrative</p>
+          <h2>What to emphasize</h2>
+        </div>
+        <div class="poster-points">
+          <article class="poster-point">
+            <h3>Problem</h3>
+            <p>ID photos and selfies differ in pose, lighting, capture device, compression, and image age.</p>
+          </article>
+          <article class="poster-point">
+            <h3>Approach</h3>
+            <p>Use a strong face-recognition backbone, then calibrate confidence with blur, exposure, and face visibility.</p>
+          </article>
+          <article class="poster-point">
+            <h3>Main figure</h3>
+            <p>Show the ROC curve comparing ArcFace cosine similarity against quality-aware fusion.</p>
+          </article>
+          <article class="poster-point">
+            <h3>Claim</h3>
+            <p>The project adds an interpretable quality-aware layer to a highly cited face-verification baseline.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section table-section">
+        <div class="section-heading">
+          <p class="eyebrow">Reproducibility</p>
+          <h2>Code, data, and privacy</h2>
+        </div>
+        <div class="notice">
+          <p>
+            The public repository includes source code, aggregate metrics, and
+            plots. Raw biometric images, ID documents, Kaggle credentials,
+            model weights, local embedding caches, and pair-level path CSVs are
+            excluded.
+          </p>
+          <p>
+            Project code is MIT licensed. Original documentation and aggregate
+            figures are CC BY-NC 4.0 unless otherwise noted. Third-party
+            datasets and pretrained weights remain under their original terms.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Face Bridge · Quality-aware ID-to-selfie verification</p>
+      <a href="THIRD_PARTY_NOTICES.md">Third-party notices</a>
+    </footer>
+  </body>
+</html>
+

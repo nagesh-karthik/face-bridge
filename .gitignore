@@ -38,3 +38,6 @@ results*/projection_heads.pt
 .DS_Store
 .vscode/
 .idea/
+
+# GitHub Pages local build output
+_site/
