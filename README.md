@@ -27,7 +27,26 @@ ID-photo to selfie verification.
 - `compare_published_baseline.py` - ArcFace cosine baseline comparison
 - `train_domain_projection_heads.py` - prototype ID/selfie adapter-head training
 - `pairs.example.csv` - non-sensitive example pair file format
+- `index.html` and `assets/site.css` - static GitHub Pages project site
 - `results*/` - aggregate metrics and poster-ready plots only
+
+## GitHub Pages
+
+The repository includes a static project site and a GitHub Actions workflow for
+Pages deployment.
+
+Expected site URL:
+
+```text
+https://nagesh-karthik.github.io/face-bridge/
+```
+
+For the first deployment, enable Pages in the GitHub repository UI:
+
+1. Open `Settings` -> `Pages`.
+2. Under `Build and deployment`, set `Source` to `GitHub Actions`.
+3. Re-run the `Deploy GitHub Pages` workflow if the first run happened before
+   Pages was enabled.
 
 ## Data Notice
 
