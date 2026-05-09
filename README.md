@@ -3,6 +3,9 @@
 Quality-aware ID-to-selfie face verification experiments for poster-ready
 computer vision results.
 
+Bridging the gap between ID photos and selfies: a modern face verification
+approach.
+
 ## What This Project Does
 
 This project compares standard face-embedding verification against a
@@ -74,4 +77,3 @@ otherwise noted.
 Datasets, face images, identity documents, pretrained model weights, and
 third-party libraries remain under their own licenses and terms. See
 `THIRD_PARTY_NOTICES.md`.
-
