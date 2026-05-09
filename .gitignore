@@ -1,0 +1,40 @@
+# Local credentials and secrets
+.env
+.env.*
+*.env
+kaggle.json
+.kaggle/
+.cache/kaggle/
+
+# Biometric datasets and raw identity images
+data/
+kaggle_downloads/
+datasets/
+raw_data/
+private_data/
+pairs.csv
+
+# Local caches, model weights, and embeddings
+.cache/
+__pycache__/
+*.py[cod]
+*.npz
+*.npy
+*.pt
+*.pth
+*.h5
+*.onnx
+
+# Generated pair-level outputs with local image paths / identity splits
+results*/pair_results.csv
+results*/train_pairs.csv
+results*/val_pairs.csv
+results*/test_pairs.csv
+results*/streamed_pairs.csv
+results*/run_summary.json
+results*/projection_heads.pt
+
+# OS and editor files
+.DS_Store
+.vscode/
+.idea/

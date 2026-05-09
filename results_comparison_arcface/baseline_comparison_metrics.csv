@@ -1,0 +1,3 @@
+method,score_column,roc_auc,eer,eer_threshold,accuracy_at_eer_threshold,false_match_rate,false_non_match_rate,true_positive,false_positive,true_negative,false_negative
+Published baseline: ArcFace cosine similarity,arcface_cosine_score,0.9711538461538461,0.019230769230769218,0.6465154737234116,0.9642857142857143,0.0,0.038461538461538464,50,0,4,2
+Proposed: quality-aware fused score,fused_score,0.9759615384615384,0.019230769230769218,0.67056789677194,0.9642857142857143,0.0,0.038461538461538464,50,0,4,2

@@ -1,0 +1,3 @@
+method,roc_auc,eer,eer_threshold,accuracy_at_eer_threshold,false_match_rate,false_non_match_rate,true_positive,false_positive,true_negative,false_negative
+Frozen ArcFace cosine baseline,0.8925540123456791,0.13194444444444445,0.5899060964584351,0.8680555555555556,0.1388888888888889,0.125,63,10,62,9
+Prototype ID/selfie residual adapters,0.8925540123456791,0.13194444444444445,0.8082219958305359,0.8680555555555556,0.1388888888888889,0.125,63,10,62,9

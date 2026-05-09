@@ -1,0 +1,2 @@
+roc_auc,eer,eer_threshold,accuracy_at_eer_threshold,false_match_rate,false_non_match_rate,true_positive,false_positive,true_negative,false_negative
+0.8461538461538461,0.19963369963369962,0.6911139899448115,0.7529411764705882,0.14285714285714285,0.2564102564102564,58,1,6,20

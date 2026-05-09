@@ -1,0 +1,3 @@
+id_path,selfie_path,label
+./data/id/example_person_id.jpg,./data/selfie/example_person_selfie.jpg,1
+./data/id/example_person_id.jpg,./data/selfie/example_impostor_selfie.jpg,0
