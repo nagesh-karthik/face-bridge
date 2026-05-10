@@ -402,6 +402,69 @@ tbody tr:last-child td {
   background: var(--panel);
 }
 
+.references-section {
+  width: min(1180px, calc(100% - 32px));
+}
+
+.reference-intro {
+  max-width: 860px;
+  margin: -12px 0 26px;
+  color: var(--muted);
+  font-size: 1.03rem;
+}
+
+.reference-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.reference-item {
+  min-height: 292px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.reference-item h3 {
+  margin-top: 10px;
+}
+
+.reference-item a {
+  text-decoration-color: rgba(49, 94, 170, 0.36);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.reference-item a:hover {
+  color: var(--blue);
+  text-decoration-color: var(--blue);
+}
+
+.reference-item p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.reference-item p + p {
+  margin-top: 10px;
+}
+
+.reference-tag {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--green);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .notice {
   padding: 26px;
   border: 1px solid var(--line);
@@ -458,6 +521,7 @@ tbody tr:last-child td {
   .method-grid,
   .claim-grid,
   .poster-points,
+  .reference-grid,
   .figure-grid {
     grid-template-columns: 1fr;
   }
@@ -497,6 +561,7 @@ tbody tr:last-child td {
 
   .step,
   .poster-point,
+  .reference-item,
   .notice,
   .formula-block {
     padding: 18px;

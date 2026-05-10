@@ -20,6 +20,7 @@
           <a href="#validation">Validation</a>
           <a href="#results">Results</a>
           <a href="#poster">Poster</a>
+          <a href="#references">References</a>
           <a href="https://github.com/nagesh-karthik/face-bridge">GitHub</a>
         </div>
       </nav>
@@ -338,6 +339,131 @@
             into an ID-to-selfie decision pipeline and validating that component
             against a baseline.
           </p>
+        </div>
+      </section>
+
+      <section class="section references-section" id="references">
+        <div class="section-heading">
+          <p class="eyebrow">References</p>
+          <h2>High-impact papers behind the project</h2>
+        </div>
+        <p class="reference-intro">
+          These papers were used to frame the poster, baseline comparison, and
+          future-work direction. The implementation uses pretrained
+          DeepFace/ArcFace-style embeddings and a lightweight quality-aware
+          fusion layer; it does not reimplement every cited method.
+        </p>
+        <div class="reference-grid">
+          <article class="reference-item">
+            <span class="reference-tag">Face embeddings</span>
+            <h3>
+              <a href="https://openaccess.thecvf.com/content_cvpr_2014/html/Taigman_DeepFace_Closing_the_2014_CVPR_paper.html">
+                DeepFace: Closing the Gap to Human-Level Performance in Face Verification
+              </a>
+            </h3>
+            <p>Taigman, Yang, Ranzato, and Wolf, CVPR 2014.</p>
+            <p>Supports the detect, align, represent, and classify framing for modern face verification.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-tag">Face embeddings</span>
+            <h3>
+              <a href="https://doi.org/10.1109/CVPR.2015.7298682">
+                FaceNet: A Unified Embedding for Face Recognition and Clustering
+              </a>
+            </h3>
+            <p>Schroff, Kalenichenko, and Philbin, CVPR 2015.</p>
+            <p>Motivates compact face embeddings where distance corresponds to identity similarity.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-tag">Baseline model</span>
+            <h3>
+              <a href="https://doi.org/10.1109/CVPR.2019.00482">
+                ArcFace: Additive Angular Margin Loss for Deep Face Recognition
+              </a>
+            </h3>
+            <p>Deng, Guo, Xue, and Zafeiriou, CVPR 2019.</p>
+            <p>Provides the strong published face-recognition baseline used for the cosine-similarity comparison.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-tag">Training data context</span>
+            <h3>
+              <a href="https://doi.org/10.1109/FG.2018.00020">
+                VGGFace2: A Dataset for Recognising Faces across Pose and Age
+              </a>
+            </h3>
+            <p>Cao, Shen, Xie, Parkhi, and Zisserman, FG 2018.</p>
+            <p>Grounds the discussion of pose, age, illumination, and demographic variation in face datasets.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-tag">Metric learning</span>
+            <h3>
+              <a href="https://doi.org/10.1109/CVPR.2005.202">
+                Learning a Similarity Metric Discriminatively, with Application to Face Verification
+              </a>
+            </h3>
+            <p>Chopra, Hadsell, and LeCun, CVPR 2005.</p>
+            <p>Supports the paired-image verification and Siamese-style matching perspective.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-tag">Metric learning</span>
+            <h3>
+              <a href="https://doi.org/10.1109/CVPR.2006.100">
+                Dimensionality Reduction by Learning an Invariant Mapping
+              </a>
+            </h3>
+            <p>Hadsell, Chopra, and LeCun, CVPR 2006.</p>
+            <p>Provides the contrastive-learning foundation for pulling similar samples together and pushing dissimilar samples apart.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-tag">Face image quality</span>
+            <h3>
+              <a href="https://openaccess.thecvf.com/content_CVPR_2020/html/Terhorst_SER-FIQ_Unsupervised_Estimation_of_Face_Image_Quality_Based_on_Stochastic_CVPR_2020_paper.html">
+                SER-FIQ: Unsupervised Estimation of Face Image Quality Based on Stochastic Embedding Robustness
+              </a>
+            </h3>
+            <p>Terhorst, Kolf, Damer, Kirchbuchner, and Kuijper, CVPR 2020.</p>
+            <p>Motivates estimating whether a face image is reliable enough for recognition.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-tag">Face image quality</span>
+            <h3>
+              <a href="https://openaccess.thecvf.com/content/CVPR2021/html/Meng_MagFace_A_Universal_Representation_for_Face_Recognition_and_Quality_Assessment_CVPR_2021_paper.html">
+                MagFace: A Universal Representation for Face Recognition and Quality Assessment
+              </a>
+            </h3>
+            <p>Meng, Zhao, Huang, and Zhou, CVPR 2021.</p>
+            <p>Connects face-recognition embeddings with quality-aware confidence under difficult image conditions.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-tag">Face image quality</span>
+            <h3>
+              <a href="https://doi.org/10.48550/arXiv.1904.01740">
+                FaceQnet: Quality Assessment for Face Recognition based on Deep Learning
+              </a>
+            </h3>
+            <p>Hernandez-Ortega, Galbally, Fierrez, Haraksim, et al., 2019.</p>
+            <p>Supports the idea that face quality can be estimated as suitability for downstream recognition.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-tag">Blur and sharpness</span>
+            <h3>
+              <a href="https://doi.org/10.1016/j.patcog.2012.11.011">
+                Analysis of Focus Measure Operators for Shape-from-Focus
+              </a>
+            </h3>
+            <p>Pertuz, Puig, and Garcia, Pattern Recognition 2013.</p>
+            <p>Supports using focus and sharpness operators as interpretable computer-vision quality cues.</p>
+          </article>
+          <article class="reference-item">
+            <span class="reference-tag">Evaluation</span>
+            <h3>
+              <a href="https://doi.org/10.1016/j.patrec.2005.10.010">
+                An Introduction to ROC Analysis
+              </a>
+            </h3>
+            <p>Fawcett, Pattern Recognition Letters 2006.</p>
+            <p>Supports ROC-AUC as the main poster metric for comparing verification performance across thresholds.</p>
+          </article>
         </div>
       </section>
 
