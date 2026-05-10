@@ -240,7 +240,8 @@ figcaption {
 }
 
 .step,
-.poster-point {
+.poster-point,
+.claim-item {
   min-height: 220px;
   padding: 22px;
   border: 1px solid var(--line);
@@ -250,10 +251,23 @@ figcaption {
 
 .step p,
 .poster-point p,
+.claim-item p,
 .section-copy p,
-.notice p {
+.notice p,
+.validation-copy p,
+.positioning-list p {
   margin: 0;
   color: var(--muted);
+}
+
+.claim-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  gap: 18px;
+}
+
+.primary-claim {
+  border-left: 6px solid var(--green);
 }
 
 .step-number {
@@ -301,6 +315,29 @@ figcaption {
 
 .formula-block p + p {
   margin-top: 14px;
+}
+
+.formula-note {
+  color: var(--muted);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.92rem;
+}
+
+.validation-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.validation-copy {
+  display: grid;
+  gap: 16px;
+  font-size: 1.05rem;
+}
+
+.compact-table table {
+  min-width: 520px;
 }
 
 .results-section {
@@ -352,6 +389,19 @@ tbody tr:last-child td {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.poster-points-wide {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.positioning-list {
+  display: grid;
+  gap: 16px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
 .notice {
   padding: 26px;
   border: 1px solid var(--line);
@@ -398,13 +448,15 @@ tbody tr:last-child td {
   }
 
   .hero,
-  .split-section {
+  .split-section,
+  .validation-grid {
     min-height: auto;
     grid-template-columns: 1fr;
   }
 
   .metric-band,
   .method-grid,
+  .claim-grid,
   .poster-points,
   .figure-grid {
     grid-template-columns: 1fr;
@@ -454,4 +506,3 @@ tbody tr:last-child td {
     flex-direction: column;
   }
 }
-
