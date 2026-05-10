@@ -19,6 +19,7 @@
           <a href="#method">Method</a>
           <a href="#validation">Validation</a>
           <a href="#stability">Stability</a>
+          <a href="#robustness">Robustness</a>
           <a href="#results">Results</a>
           <a href="#poster">Poster</a>
           <a href="#references">References</a>
@@ -280,6 +281,92 @@
               alt="Bootstrap distribution of ROC-AUC improvement for quality-aware fusion minus ArcFace baseline"
             >
             <figcaption>The improvement distribution crosses zero, so the pilot gain is promising but not conclusive.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section robustness-section" id="robustness">
+        <div class="section-heading">
+          <p class="eyebrow">Synthetic Degradation Test</p>
+          <h2>What happens when selfie quality gets worse?</h2>
+        </div>
+        <div class="stability-grid">
+          <div class="stability-copy">
+            <p>
+              To stress test the quality-aware idea without collecting new
+              data, the selfie side of each pair was synthetically degraded
+              using blur, low light, overexposure, JPEG compression, and
+              Gaussian noise. The original verification code path was reused:
+              ArcFace embeddings, quality scores, cosine similarity, and fused
+              scoring were recomputed for each condition.
+            </p>
+            <p>
+              The result is mixed but useful. Strong blur produced a small
+              quality-aware ROC-AUC gain, JPEG compression slightly favored the
+              baseline, and Gaussian noise exposed a limitation: the current
+              Laplacian sharpness cue can treat noise as high sharpness. This
+              gives a concrete next improvement direction for the quality
+              layer.
+            </p>
+            <div class="ci-callout">
+              <strong>Robustness setup:</strong> 62 local pairs per condition
+              were tested, with 52 genuine pairs and 10 impostor pairs. No
+              degraded face images were saved or published.
+            </div>
+          </div>
+          <div class="table-wrap compact-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Condition</th>
+                  <th>Baseline AUC</th>
+                  <th>Fused AUC</th>
+                  <th>Delta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Clean</td>
+                  <td>1.000</td>
+                  <td>1.000</td>
+                  <td>0.000</td>
+                </tr>
+                <tr>
+                  <td>Strong blur</td>
+                  <td>0.958</td>
+                  <td>0.969</td>
+                  <td>+0.010</td>
+                </tr>
+                <tr>
+                  <td>JPEG q25</td>
+                  <td>0.969</td>
+                  <td>0.958</td>
+                  <td>-0.010</td>
+                </tr>
+                <tr>
+                  <td>Gaussian noise</td>
+                  <td>0.972</td>
+                  <td>0.972</td>
+                  <td>0.000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="figure-grid stability-figures">
+          <figure class="result-figure">
+            <img
+              src="results_synthetic_degradation/synthetic_degradation_auc.png"
+              alt="ROC-AUC under synthetic selfie degradation conditions"
+            >
+            <figcaption>Quality-aware fusion and baseline performance under synthetic selfie degradation.</figcaption>
+          </figure>
+          <figure class="result-figure">
+            <img
+              src="results_synthetic_degradation/synthetic_degradation_quality.png"
+              alt="Mean selfie quality score under synthetic degradation"
+            >
+            <figcaption>Quality scores decrease under blur and low light, but noise reveals a sharpness-score limitation.</figcaption>
           </figure>
         </div>
       </section>

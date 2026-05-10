@@ -38,9 +38,11 @@ jobs:
           cp -R results_comparison_arcface _site/
           cp -R results_bootstrap_ci _site/
           cp -R results_projection_heads_residual _site/
+          cp -R results_synthetic_degradation _site/
           cp -R results_streamed_arcface _site/
           find _site -name "pair_results.csv" -delete
           find _site -name "streamed_pairs.csv" -delete
+          find _site -name "synthetic_degradation_pair_scores.csv" -delete
           find _site -name "train_pairs.csv" -delete
           find _site -name "val_pairs.csv" -delete
           find _site -name "test_pairs.csv" -delete

@@ -33,6 +33,7 @@ results*/test_pairs.csv
 results*/streamed_pairs.csv
 results*/run_summary.json
 results*/projection_heads.pt
+results*/synthetic_degradation_pair_scores.csv
 
 # OS and editor files
 .DS_Store

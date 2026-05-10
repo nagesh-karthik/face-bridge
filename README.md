@@ -89,6 +89,18 @@ python bootstrap_confidence_intervals.py \
   --iterations 5000
 ```
 
+Run synthetic image-quality degradation tests without saving degraded face
+images:
+
+```bash
+python synthetic_degradation_experiment.py \
+  --pairs pairs.csv \
+  --output results_synthetic_degradation \
+  --model ArcFace \
+  --target-domain selfie \
+  --max-positive-pairs 52
+```
+
 Train the prototype residual ID/selfie adapter heads:
 
 ```bash
