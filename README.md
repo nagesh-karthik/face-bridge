@@ -79,6 +79,16 @@ python compare_published_baseline.py \
   --output results_comparison_arcface
 ```
 
+Estimate bootstrap confidence intervals for the baseline and quality-aware
+results:
+
+```bash
+python bootstrap_confidence_intervals.py \
+  --pair-results results_streamed_arcface/pair_results.csv \
+  --output results_bootstrap_ci \
+  --iterations 5000
+```
+
 Train the prototype residual ID/selfie adapter heads:
 
 ```bash
