@@ -336,6 +336,41 @@ figcaption {
   font-size: 1.05rem;
 }
 
+.stability-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.stability-copy {
+  display: grid;
+  gap: 16px;
+  font-size: 1.05rem;
+}
+
+.stability-copy p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.ci-callout {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--coral);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--muted);
+}
+
+.ci-callout strong {
+  color: var(--ink);
+}
+
+.stability-figures {
+  margin-top: 24px;
+}
+
 .compact-table table {
   min-width: 520px;
 }
@@ -512,7 +547,8 @@ tbody tr:last-child td {
 
   .hero,
   .split-section,
-  .validation-grid {
+  .validation-grid,
+  .stability-grid {
     min-height: auto;
     grid-template-columns: 1fr;
   }

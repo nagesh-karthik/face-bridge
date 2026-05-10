@@ -36,6 +36,7 @@ jobs:
           cp -R assets _site/
           cp -R results _site/
           cp -R results_comparison_arcface _site/
+          cp -R results_bootstrap_ci _site/
           cp -R results_projection_heads_residual _site/
           cp -R results_streamed_arcface _site/
           find _site -name "pair_results.csv" -delete

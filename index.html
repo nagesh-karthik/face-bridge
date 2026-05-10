@@ -18,6 +18,7 @@
           <a href="#contribution">Contribution</a>
           <a href="#method">Method</a>
           <a href="#validation">Validation</a>
+          <a href="#stability">Stability</a>
           <a href="#results">Results</a>
           <a href="#poster">Poster</a>
           <a href="#references">References</a>
@@ -202,6 +203,84 @@
               </tbody>
             </table>
           </div>
+        </div>
+      </section>
+
+      <section class="section stability-section" id="stability">
+        <div class="section-heading">
+          <p class="eyebrow">Bootstrap Stability Check</p>
+          <h2>How reliable is the pilot improvement?</h2>
+        </div>
+        <div class="stability-grid">
+          <div class="stability-copy">
+            <p>
+              A stratified bootstrap analysis was run on the existing scored
+              pairs to test whether the ROC-AUC improvement is stable under
+              small changes to the sample. Each bootstrap draw preserves the
+              original class balance and recomputes baseline and fused metrics.
+            </p>
+            <p>
+              The quality-aware score remains directionally better on the
+              original run, but the 95% confidence interval for the ROC-AUC
+              difference crosses zero. The honest interpretation is that the
+              result is promising, but not statistically conclusive on this
+              small subset.
+            </p>
+            <div class="ci-callout">
+              <strong>Bootstrap setup:</strong> 5,000 stratified resamples from
+              56 usable scored pairs, including 52 genuine pairs and 4 impostor
+              pairs.
+            </div>
+          </div>
+          <div class="table-wrap compact-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Original</th>
+                  <th>95% CI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ArcFace ROC-AUC</td>
+                  <td>0.971</td>
+                  <td>0.923-1.000</td>
+                </tr>
+                <tr>
+                  <td>Quality-aware ROC-AUC</td>
+                  <td>0.976</td>
+                  <td>0.928-1.000</td>
+                </tr>
+                <tr>
+                  <td>ROC-AUC delta</td>
+                  <td>+0.0048</td>
+                  <td>-0.024 to +0.038</td>
+                </tr>
+                <tr>
+                  <td>EER delta</td>
+                  <td>0.000</td>
+                  <td>-0.019 to 0.000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="figure-grid stability-figures">
+          <figure class="result-figure">
+            <img
+              src="results_bootstrap_ci/bootstrap_auc_distribution.png"
+              alt="Bootstrap distribution of ROC-AUC for ArcFace baseline and quality-aware fusion"
+            >
+            <figcaption>Bootstrap ROC-AUC distributions overlap substantially on the small scored subset.</figcaption>
+          </figure>
+          <figure class="result-figure">
+            <img
+              src="results_bootstrap_ci/bootstrap_delta_auc_distribution.png"
+              alt="Bootstrap distribution of ROC-AUC improvement for quality-aware fusion minus ArcFace baseline"
+            >
+            <figcaption>The improvement distribution crosses zero, so the pilot gain is promising but not conclusive.</figcaption>
+          </figure>
         </div>
       </section>
 
